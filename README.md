@@ -37,10 +37,14 @@ isForce: false → Optional update alert (user can skip)
 Use this when you want to control update behavior yourself (e.g. show a custom alert, only trigger for .major updates, etc.):
 
 UpdateManager.shared.checkForUpdate { result in
+
     switch result {
     case .success(let info):
+    
         print("✅ Update available:", info.version)
+        
         print("📜 Release Notes:", info.releaseNotes)
+        
         print("🔗 App Store Link:", info.trackViewUrl)
 
         // Optional: present your own custom popup
