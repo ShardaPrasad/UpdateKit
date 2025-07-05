@@ -8,47 +8,51 @@
 import SwiftUI
 
 @available(iOS 13.0.0, *)
-public struct UpdateAlertView: View {
-    @ObservedObject var manager: UpdateManager = .shared
-    
-    public init() {}
-    
-    public var body: some View {
-        if manager.showUpdateAlert, let version = manager.latestVersion {
-            VStack(spacing: 16) {
-                Text("Update Available")
-                    .font(.title).bold()
-                Text("Version \(version) is available with improvements.")
-                    .multilineTextAlignment(.center)
-                
-                HStack {
-                    if !manager.isForceUpdate {
-                        Button("Skip") {
-                            manager.showUpdateAlert = false
-                        }
-                        .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(10)
-                    }
+struct UpdateAlertView: View {
+    let version: String
+    let releaseNotes: String
+    let isForce: Bool
+    let onUpdate: () -> Void
+    let onSkip: () -> Void
 
-                    Button("Update Now") {
-                        if let urlString = manager.appStoreURL,
-                           let url = URL(string: urlString) {
-                            UIApplication.shared.open(url)
-                        }
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("🚀 New Update Available")
+                .font(.title)
+                .bold()
+
+            Text("Version \(version)\n\n\(releaseNotes)")
+                .font(.body)
+                .multilineTextAlignment(.center)
+
+            HStack {
+                if !isForce {
+                    Button("Later") {
+                        onSkip()
                     }
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
                 }
+
+                Button("Update Now") {
+                    onUpdate()
+                }
+                .padding()
             }
-            .padding()
-            .background(Color(.systemBackground))
-            .cornerRadius(16)
-            .shadow(radius: 10)
-            .padding()
         }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(20)
+        .padding(30)
     }
 }
 
+@available(iOS 13.0, *)
+struct BlurView: UIViewRepresentable {
+    let style: UIBlurEffect.Style
+
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        UIVisualEffectView(effect: UIBlurEffect(style: style))
+    }
+
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
+}
