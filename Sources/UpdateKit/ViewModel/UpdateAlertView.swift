@@ -10,6 +10,7 @@ import SwiftUI
 @available(iOS 13.0.0, *)
 struct UpdateAlertView: View {
     let version: String
+    let currentVersion: String
     let releaseNotes: String
     let isForce: Bool
     let onUpdate: () -> Void

@@ -7,6 +7,7 @@
 
 public struct UpdateInfo {
     public let version: String
+    public let currentVersion: String
     public let releaseNotes: String?
     public let trackViewUrl: String
     public let updateType: UpdateType
