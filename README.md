@@ -24,7 +24,7 @@ UpdateKit is a lightweight Swift package for iOS apps that checks for App Store 
 
 Use this when you want UpdateKit to handle the UI for you:
 
-UpdateManager.shared.checkForUpdate(isForce: false)
+    UpdateManager.shared.checkForUpdate(isForce: false)
 
 isForce: true → Force update alert (user must update, no skip)
 
@@ -36,17 +36,14 @@ isForce: false → Optional update alert (user can skip)
 
 Use this when you want to control update behavior yourself (e.g. show a custom alert, only trigger for .major updates, etc.):
 
-UpdateManager.shared.checkForUpdate { result in
 
+    UpdateManager.shared.checkForUpdate { result in
     switch result {
     case .success(let info):
     
         print("✅ Update available:", info.version)
-        
         print("📜 Release Notes:", info.releaseNotes)
-        
         print("🔗 App Store Link:", info.trackViewUrl)
-
         // Optional: present your own custom popup
         // Example: AlertPresenter.presentCustomAlert(for: info)
 
