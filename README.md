@@ -80,8 +80,8 @@ Or via Package.swift
 
 Then add "UpdateKit" to your target dependencies.
 
-![Optional](Screenshots/2.png)
-![Force](Screenshots/1.png)
+![Optional](https://github.com/ShardaPrasad/Files/blob/main/Screenshots/1.png))
+![Force](https://github.com/ShardaPrasad/Files/blob/main/Screenshots/1.png)
 
 Optional Update Alert
 
