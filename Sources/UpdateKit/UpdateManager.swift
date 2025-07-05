@@ -66,6 +66,7 @@ public final class UpdateManager: ObservableObject {
 
             let updateInfo = UpdateInfo(
                 version: version,
+                currentVersion: self.currentVersion,
                 releaseNotes: releaseNotes,
                 trackViewUrl: trackURL,
                 updateType: updateType,
@@ -157,6 +158,7 @@ extension UpdateManager {
 
             let info = UpdateInfo(
                 version: appInfo.version,
+                currentVersion: self.currentVersion,
                 releaseNotes: appInfo.releaseNotes,
                 trackViewUrl: appInfo.trackViewUrl,
                 updateType: UpdateManager.determineUpdateType(current: currentVersion, store: appInfo.version),
