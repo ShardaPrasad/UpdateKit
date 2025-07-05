@@ -68,7 +68,7 @@ Via Xcode
 
 In Xcode, go to File > Add Packages
 
-Enter your package URL:
+Enter the package URL:
 
 https://github.com/ShardaPrasad/UpdateKit
 
