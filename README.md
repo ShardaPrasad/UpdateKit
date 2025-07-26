@@ -89,9 +89,6 @@ Force Update Alert
 
 Custom Alert with Notes
 
-
-📁 Place your images inside a Screenshots/ folder at the repo root.
-
 📄 License
 
 This project is licensed under the MIT License.
